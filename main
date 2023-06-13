@@ -1,0 +1,45 @@
+#!/bin/bash
+PS3="Select the operation: "
+
+select opt in adduser deleteUser modifyUser displayUsers addGroup ModifyGroup dellGroup displayGroups EnableOrDisableUser  quit; do
+
+  case $opt in
+    adduser)
+      	./addUser
+      ;;
+    deleteUser)
+	./deleteUser
+      ;;
+    modifyUser)
+        ./modifyUser
+      ;;
+
+    displayUsers)
+        awk -F: '{print "name:", $1, "-UID:", $3, "-Shell Type:", $7}' /etc/passwd
+      ;;
+
+    addGroup)
+        ./addGroup
+      ;;
+    ModifyGroup)
+        ./modifyGroup
+      ;;
+
+    dellGroup)
+        ./dellGroup
+      ;;
+    displayGroups)
+        awk -F: '{print "name:", $1, "-UID:", $3}' /etc/group
+      ;;
+    EnableOrDisableUser)
+	    ./enableAndDisable 
+      ;;
+    quit)
+      break
+      ;;
+    *) 
+      echo "Invalid option $REPLY"
+      ;;
+  esac
+done
+

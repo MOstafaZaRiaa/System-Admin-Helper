@@ -1,0 +1,53 @@
+#!/bin/bash
+#this script is a sup from the main script 
+#the main screipt is uses to change and modify conf in users and groups
+#you can run this script alone with typr : ./modifyUser
+
+modify () {
+  #first var is for the options like"-c"
+  #seconf var for the value
+  #3rd is for the user that will modified
+if id "$3" >/dev/null 2>&1; then 
+ 
+  sudo usermod $1 $2 $3
+  if [ $? -eq 0 ]
+  then
+	  echo "The user: $3 is modified successfully" 
+  fi
+else
+	echo "User $3 does not exist."
+fi
+}
+
+
+PS3="Select the operation to modify: "
+
+select opt in ChangeUserComment ChangeID AppendToGroup  quit; do
+
+  case $opt in
+    ChangeUserComment)
+	read -p "Enter the username: " name
+	read -p "Enter the comment: " comment
+	modify "-c" "$comment" "$name"
+
+      ;;
+    ChangeID)
+	read -p "Enter the username: " name
+        read -p "Enter the new ID: " id
+        modify "-u" "$id" "$name"
+      ;;
+    AppendToGroup)
+        read -p "Enter the username: " name
+        read -p "Enter the group name: " group
+        modify "-aG" "$group" "$name"
+      ;;
+
+    quit)
+      break
+      ;;
+    *)
+      echo "Invalid option $REPLY"
+      ;;
+  esac
+done
+

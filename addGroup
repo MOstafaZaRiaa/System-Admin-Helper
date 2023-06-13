@@ -1,0 +1,12 @@
+#!/bin/bash
+#this script is to add group 
+
+echo "Please enter group name to add."
+read groupname
+sudo groupadd $groupname
+
+if [ $? -eq 0 ]
+then
+        echo "Group added successfully."
+fi
+

@@ -1,0 +1,19 @@
+#!/bin/bash
+#this script check if user is exit and after it,
+#the script reverses it's status if enabled it turns disabled
+
+echo "Note: The user status is been reversed."
+read -p "Enter username: " username
+
+if id "$username" >/dev/null 2>&1; then
+    if sudo passwd -S "$username" | grep -q " L"; then
+        sudo usermod -U "$username"
+        echo "User $username has been enabled."
+    else
+        sudo usermod -L "$username"
+        echo "User $username has been disabled."
+    fi
+else
+    echo "User $username does not exist."
+fi
+

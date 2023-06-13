@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Please enter user name to delete."
+read name
+sudo userdel $name
+
+if [ $? -eq 0 ]
+then
+        echo "User deletetd successfully."
+fi
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Please enter user name to add."
+read name
+sudo useradd $name
+
+if [ $? -eq 0 ]
+then
+	echo "User added successfully."
+fi

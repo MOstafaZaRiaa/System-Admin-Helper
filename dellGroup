@@ -1,0 +1,13 @@
+#!/bin/bash
+#this script is to add group
+
+echo "Please enter group name to delete."
+read groupname
+sudo groupdel $groupname
+
+if [ $? -eq 0 ]
+then
+        echo "Group deleted successfully."
+fi
+
+
