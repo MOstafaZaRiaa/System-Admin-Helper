@@ -17,7 +17,7 @@ Before running the Bash script, you will need to have the following:
 ## To get started:
 Clone this repository to your local machine.
 ```
-https://github.com/AbdulrahmanElfeki/System-Admin-Helper
+https://github.com/MOstafaZaRiaa/System-Admin-Helper
 ```
 Change script permissions
 ```
